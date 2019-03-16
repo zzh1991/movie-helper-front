@@ -75,7 +75,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              outputPath: './src/main/resources/static/images/'
+              outputPath: '../src/main/resources/static/images/'
             }
           }
         ]
