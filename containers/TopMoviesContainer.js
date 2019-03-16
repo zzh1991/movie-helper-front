@@ -31,17 +31,17 @@ class TopMoviesContainer extends Component {
 function mapStateToProps(state) {
   return {
     data: state.info.movieTopList.data,
-    loading: state.info.movieTopList.loading
+    loading: state.info.movieTopList.loading,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(TopMoviesContainer);

@@ -30,17 +30,17 @@ class StarMoviesContainer extends Component {
 function mapStateToProps(state) {
   return {
     data: state.info.movieStarList.data,
-    loading: state.info.movieStarList.loading
+    loading: state.info.movieStarList.loading,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(StarMoviesContainer);

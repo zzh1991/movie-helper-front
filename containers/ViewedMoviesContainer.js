@@ -30,17 +30,17 @@ class ViewedMoviesContainer extends Component {
 function mapStateToProps(state) {
   return {
     data: state.info.movieViewedList.data,
-    loading: state.info.movieViewedList.loading
+    loading: state.info.movieViewedList.loading,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ViewedMoviesContainer);

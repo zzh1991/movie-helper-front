@@ -25,17 +25,17 @@ class AllMoviesContainer extends Component {
 function mapStateToProps(state) {
   return {
     data: state.info.allMoviesList.data,
-    loading: state.info.allMoviesList.loading
+    loading: state.info.allMoviesList.loading,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AllMoviesContainer);

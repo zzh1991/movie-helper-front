@@ -31,17 +31,17 @@ class SidebarContainer extends Component {
 function mapStateToProps(state) {
   return {
     data: state.info.movieRecentList.data,
-    loading: state.info.movieRecentList.loading
+    loading: state.info.movieRecentList.loading,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(SidebarContainer);
