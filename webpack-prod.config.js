@@ -16,49 +16,49 @@ module.exports = {
       'redux',
       'redux-saga',
       'redux-thunk',
-      'prop-types'
-    ]
+      'prop-types',
+    ],
   },
   output: {
-    path: path.resolve(__dirname, 'src/main/resources/static/'),
+    path: path.resolve(__dirname, '../src/main/resources/static/'),
     filename: 'built/[name].[hash].js',
     chunkFilename: 'built/[name].[hash].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
       {
         test: /\.js[x]?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader'
-          }
-        ]
+            loader: 'css-loader',
+          },
+        ],
       },
       {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
             loader: 'less-loader',
             options: {
-              javascriptEnabled: true
-            }
-          }
-        ]
+              javascriptEnabled: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -67,12 +67,12 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              outputPath: './src/main/resources/static/images/'
-            }
-          }
-        ]
-      }
-    ]
+              outputPath: '../src/main/resources/static/images/',
+            },
+          },
+        ],
+      },
+    ],
   },
   optimization: {
     splitChunks: {
@@ -81,22 +81,22 @@ module.exports = {
           chunks: 'initial',
           test: 'vendor',
           name: 'vendor',
-          enforce: true
-        }
-      }
-    }
+          enforce: true,
+        },
+      },
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/main/resources/html-template/index.html',
-      filename: '../templates/index.html'
+      template: '../src/main/resources/html-template/index.html',
+      filename: '../templates/index.html',
     }),
     // new uglify(),
-    new CleanWebpackPlugin('./src/main/resources/static/built/*.*', {}),
+    new CleanWebpackPlugin('../src/main/resources/static/built/*.*', {}),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
-    })
-  ]
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
+  ],
 };

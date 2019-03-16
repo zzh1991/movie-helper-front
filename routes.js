@@ -6,18 +6,10 @@ import SideBar from './components/sidebar.js';
 import NotFound from './containers/notFound';
 
 const SideBarContainer = lazy(() => import('./containers/SidebarContainer'));
-const TopMoviesContainer = lazy(() =>
-  import('./containers/TopMoviesContainer')
-);
-const ViewedMoviesContainer = lazy(() =>
-  import('./containers/ViewedMoviesContainer')
-);
-const StarMoviesContainer = lazy(() =>
-  import('./containers/StarMoviesContainer')
-);
-const AllMoviesContainer = lazy(() =>
-  import('./containers/AllMoviesContainer')
-);
+const TopMoviesContainer = lazy(() => import('./containers/TopMoviesContainer'));
+const ViewedMoviesContainer = lazy(() => import('./containers/ViewedMoviesContainer'));
+const StarMoviesContainer = lazy(() => import('./containers/StarMoviesContainer'));
+const AllMoviesContainer = lazy(() => import('./containers/AllMoviesContainer'));
 
 const Routes = () => (
   <Provider store={store}>

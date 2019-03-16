@@ -1,31 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Layout, Icon, Menu } from 'antd';
 import { withRouter } from 'react-router-dom';
 import '../styles/style.css';
 
-const { Header, Content, Sider, Footer } = Layout;
+const {
+  Header, Content, Sider, Footer,
+} = Layout;
 class SideBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      collapsed: true
+      collapsed: true,
     };
   }
 
-  toPath = path => {
-    const { router } = this.context;
-    router.history.push(path);
+  toPath = (path) => {
+    const { history } = this.props;
+    history.push(path);
   };
 
   toggle = () => {
     const { collapsed } = this.state;
     this.setState({
-      collapsed: !collapsed
+      collapsed: !collapsed,
     });
   };
 
-  clickMenu = e => {
+  clickMenu = (e) => {
     this.toPath(e.key);
   };
 
@@ -37,7 +38,7 @@ class SideBar extends React.Component {
           className="header"
           style={{
             display: 'grid',
-            gridTemplateColumns: '5fr 5fr'
+            gridTemplateColumns: '5fr 5fr',
           }}
         >
           <div style={{ fontSize: 20, color: 'white', marginLeft: -30 }}>
@@ -92,9 +93,5 @@ class SideBar extends React.Component {
     );
   }
 }
-
-SideBar.contextTypes = {
-  router: PropTypes.object
-};
 
 export default withRouter(SideBar);
