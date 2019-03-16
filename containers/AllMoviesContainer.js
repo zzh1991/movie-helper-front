@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
 import { fetchAllMovieList } from '../actions/actions';
-import Main from '../containers/main';
+import Main from './main';
 
 class AllMoviesContainer extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchAllMovieList.request());
+    const { dispatch } = this.props;
+    dispatch(fetchAllMovieList.request());
   }
 
   render() {

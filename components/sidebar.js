@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout, Icon, Menu, Button } from 'antd';
+import { Layout, Icon, Menu } from 'antd';
 import { withRouter } from 'react-router-dom';
 import '../styles/style.css';
 
@@ -9,8 +9,6 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: true,
-      openMenu: false,
       collapsed: true
     };
   }
@@ -21,8 +19,9 @@ class SideBar extends React.Component {
   };
 
   toggle = () => {
+    const { collapsed } = this.state;
     this.setState({
-      collapsed: !this.state.collapsed
+      collapsed: !collapsed
     });
   };
 
@@ -31,6 +30,7 @@ class SideBar extends React.Component {
   };
 
   render() {
+    const { collapsed } = this.state;
     return (
       <Layout style={{ height: '100vh' }}>
         <Header
@@ -43,14 +43,14 @@ class SideBar extends React.Component {
           <div style={{ fontSize: 20, color: 'white', marginLeft: -30 }}>
             <Icon
               className="trigger"
-              type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+              type={collapsed ? 'menu-unfold' : 'menu-fold'}
               onClick={this.toggle}
             />
             {'  电影助手'}
           </div>
         </Header>
         <Layout>
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+          <Sider trigger={null} collapsible collapsed={collapsed}>
             <Menu
               theme="dark"
               mode="inline"

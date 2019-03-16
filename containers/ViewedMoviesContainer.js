@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Spin } from 'antd';
-import Main from '../containers/main';
-import '../styles/style.css';
 import { connect } from 'react-redux';
+import Main from './main';
+import '../styles/style.css';
 import { fetchViewdMovieList, getMovieList } from '../actions/actions';
 
 const watchedMovieName = 'watchedMovieList';
 
 class ViewedMoviesContainer extends Component {
   componentDidMount() {
+    const { dispatch } = this.props;
     let list = getMovieList(watchedMovieName);
     list = list === null ? [] : Array.from(list);
-    this.props.dispatch(fetchViewdMovieList.request(list));
+    dispatch(fetchViewdMovieList.request(list));
   }
 
   render() {

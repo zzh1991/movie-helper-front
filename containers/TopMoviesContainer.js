@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
-import SideBar from '../components/sidebar.js';
-import Main from '../containers/main';
+import Main from './main';
 import '../styles/style.css';
 import { fetchMovieTop, syncTopMovieList } from '../actions/actions';
 
 class TopMoviesContainer extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchMovieTop.request());
+    const { dispatch } = this.props;
+    dispatch(fetchMovieTop.request());
   }
 
   onSync = () => {
-    this.props.dispatch(syncTopMovieList());
+    const { dispatch } = this.props;
+    dispatch(syncTopMovieList());
   };
 
   render() {
