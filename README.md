@@ -1,3 +1,3 @@
-## install dependency
-- `yarn` or `npm install`
+# install dependency
 
+- `yarn` or `npm install`

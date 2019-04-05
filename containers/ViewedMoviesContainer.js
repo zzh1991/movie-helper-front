@@ -9,18 +9,30 @@ const watchedMovieName = 'watchedMovieList';
 
 class ViewedMoviesContainer extends Component {
   componentDidMount() {
+    this.getViewedMovieList();
+  }
+
+  getViewedMovieList = () => {
     const { dispatch } = this.props;
     let list = getMovieList(watchedMovieName);
     list = list === null ? [] : Array.from(list);
     dispatch(fetchViewdMovieList.request(list));
-  }
+  };
+
+  onRefresh = () => {
+    this.getViewedMovieList();
+  };
 
   render() {
     const { data, loading } = this.props;
     return (
       <div>
         <Spin tip="Loading..." spinning={loading}>
-          <Main data={data} />
+          <Main
+            data={data}
+            showRefreshButton
+            refreshMovies={this.onRefresh}
+          />
         </Spin>
       </div>
     );

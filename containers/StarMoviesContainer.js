@@ -9,18 +9,30 @@ const starMovieName = 'starMovieList';
 
 class StarMoviesContainer extends Component {
   componentDidMount() {
+    this.getStarMovieList();
+  }
+
+  getStarMovieList = () => {
     const { dispatch } = this.props;
     let list = getMovieList(starMovieName);
     list = list === null ? [] : Array.from(list);
     dispatch(fetchStarMovieList.request(list));
-  }
+  };
+
+  onRefresh = () => {
+    this.getStarMovieList();
+  };
 
   render() {
     const { data, loading } = this.props;
     return (
       <div>
         <Spin tip="Loading..." spinning={loading}>
-          <Main data={data} />
+          <Main
+            data={data}
+            showRefreshButton
+            refreshMovies={this.onRefresh}
+          />
         </Spin>
       </div>
     );

@@ -1,5 +1,7 @@
 import React from 'react';
-import { Table, Button, Input, Icon } from 'antd';
+import {
+  Table, Button, Input, Icon, Tooltip,
+} from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
@@ -8,45 +10,46 @@ import {
   fetchMovieViewed,
   saveMovieToLocal,
   deleteMovieToLocal,
-  getMovieList
+  getMovieList,
 } from '../actions/actions';
 import MovieDetail from '../components/movieDetail';
 
+// eslint-disable-next-line prefer-destructuring
 const Search = Input.Search;
 
 const movieType = [
   {
     text: '剧情',
-    value: '剧情'
+    value: '剧情',
   },
   {
     text: '动作',
-    value: '动作'
+    value: '动作',
   },
   {
     text: '喜剧',
-    value: '喜剧'
+    value: '喜剧',
   },
   {
     text: '爱情',
-    value: '爱情'
+    value: '爱情',
   },
   {
     text: '战争',
-    value: '战争'
+    value: '战争',
   },
   {
     text: '纪录片',
-    value: '纪录片'
+    value: '纪录片',
   },
   {
     text: '科幻',
-    value: '科幻'
+    value: '科幻',
   },
   {
     text: '动画',
-    value: '动画'
-  }
+    value: '动画',
+  },
 ];
 const watchedMovieName = 'watchedMovieList';
 const starMovieName = 'starMovieList';
@@ -55,31 +58,31 @@ class Main extends React.Component {
   state = {
     current: 1,
     pageSize: 6,
-    index: -1,
     watchedMovieSet: getMovieList(watchedMovieName),
     starMovieSet: getMovieList(starMovieName),
-    searchText: ''
+    searchText: '',
   };
 
   onShowSizeChange = (current, pageSize) => {
     this.setState({
       current,
-      pageSize
+      pageSize,
     });
   };
 
-  onChange = current => {
+  onChange = (current) => {
     this.setState({
-      current
+      current,
     });
   };
 
   updateCheck = (isChecked, id, movieListName) => {
-    this.props.dispatch(
+    const { dispatch } = this.props;
+    dispatch(
       fetchMovieViewed.request({
         id,
-        viewed: isChecked
-      })
+        viewed: isChecked,
+      }),
     );
 
     if (isChecked) {
@@ -92,47 +95,49 @@ class Main extends React.Component {
   };
 
   setViewOrStarState = (movieListName, id) => {
+    const { watchedMovieSet, starMovieSet } = this.state;
     if (movieListName === watchedMovieName) {
-      const set = this.state.watchedMovieSet;
+      const set = watchedMovieSet;
       set.add(id);
       this.setState({
-        watchedMovieSet: set
+        watchedMovieSet: set,
       });
     } else {
-      const set = this.state.starMovieSet;
+      const set = starMovieSet;
       set.add(id);
       this.setState({
-        starMovieSet: set
+        starMovieSet: set,
       });
     }
   };
 
   setUnviewOrUnstarState = (movieListName, id) => {
+    const { watchedMovieSet, starMovieSet } = this.state;
     if (movieListName === watchedMovieName) {
-      const set = this.state.watchedMovieSet;
+      const set = watchedMovieSet;
       set.delete(id);
       this.setState({
-        watchedMovieSet: set
+        watchedMovieSet: set,
       });
     } else {
-      const set = this.state.starMovieSet;
+      const set = starMovieSet;
       set.delete(id);
       this.setState({
-        starMovieSet: set
+        starMovieSet: set,
       });
     }
   };
 
-  numberToBoolean = num => {
+  numberToBoolean = (num) => {
     if (num > 0) {
       return true;
     }
     return false;
   };
 
-  searchMovie = searchText => {
+  searchMovie = (searchText) => {
     this.setState({
-      searchText
+      searchText,
     });
   };
 
@@ -151,6 +156,9 @@ class Main extends React.Component {
   };
 
   render() {
+    const {
+      watchedMovieSet, starMovieSet, current, pageSize,
+    } = this.state;
     const columns = [
       {
         title: '电影名称',
@@ -158,27 +166,31 @@ class Main extends React.Component {
         dataIndex: 'title',
         render: (text, record) => {
           return (
-            <a href={record.url} target={'_blank'}>
+            <a
+              href={record.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {text}
             </a>
           );
         },
         sorter: (a, b) => a.title.localeCompare(b.title),
-        width: 200
+        width: 200,
       },
       {
         title: '豆瓣评分',
         key: 'rate',
         dataIndex: 'rating',
         sorter: (a, b) => a.rating - b.rating,
-        width: 100
+        width: 100,
       },
       {
         title: '上映年份',
         key: 'year',
         dataIndex: 'movieYear',
         sorter: (a, b) => a.movieYear - b.movieYear,
-        width: 150
+        width: 150,
       },
       {
         title: '类型',
@@ -188,7 +200,7 @@ class Main extends React.Component {
         filters: movieType,
         filterMultiple: false,
         onFilter: (value, record) => record.genres.indexOf(value) !== -1,
-        filtered: true
+        filtered: true,
       },
       {
         title: '已观影',
@@ -197,9 +209,9 @@ class Main extends React.Component {
         render: (text, record) => {
           let isChecked = false;
           if (
-            record &&
-            record.movieId &&
-            this.state.watchedMovieSet.has(record.movieId)
+            record
+            && record.movieId
+            && watchedMovieSet.has(record.movieId)
           ) {
             isChecked = true;
           }
@@ -212,7 +224,7 @@ class Main extends React.Component {
                     this.updateCheck(
                       !isChecked,
                       record.movieId,
-                      watchedMovieName
+                      watchedMovieName,
                     );
                   }}
                 >
@@ -226,7 +238,7 @@ class Main extends React.Component {
                     this.updateCheck(
                       !isChecked,
                       record.movieId,
-                      watchedMovieName
+                      watchedMovieName,
                     );
                   }}
                 >
@@ -240,16 +252,15 @@ class Main extends React.Component {
         filters: [
           {
             text: '已观影',
-            value: 1
+            value: 1,
           },
           {
             text: '未观影',
-            value: 0
-          }
+            value: 0,
+          },
         ],
         filterMultiple: false,
-        onFilter: (value, record) =>
-          record.viewed === this.numberToBoolean(value)
+        onFilter: (value, record) => record.viewed === this.numberToBoolean(value),
       },
       {
         title: '想看',
@@ -258,9 +269,9 @@ class Main extends React.Component {
         render: (text, record) => {
           let isChecked = false;
           if (
-            record &&
-            record.movieId &&
-            this.state.starMovieSet.has(record.movieId)
+            record
+            && record.movieId
+            && starMovieSet.has(record.movieId)
           ) {
             isChecked = true;
           }
@@ -293,18 +304,21 @@ class Main extends React.Component {
         filters: [
           {
             text: '想看',
-            value: 1
+            value: 1,
           },
           {
             text: '未知',
-            value: 0
-          }
+            value: 0,
+          },
         ],
         filterMultiple: false,
-        onFilter: (value, record) => record.star === this.numberToBoolean(value)
-      }
+        onFilter: (value, record) => record.star === this.numberToBoolean(value),
+      },
     ];
 
+    const {
+      showSyncButton, showRefreshButton, syncMovies, refreshMovies,
+    } = this.props;
     let { data } = this.props;
     if (data !== null) {
       const { searchText } = this.state;
@@ -316,9 +330,8 @@ class Main extends React.Component {
       });
     }
 
-    const { watchedMovieSet, starMovieSet, current, pageSize } = this.state;
     if (watchedMovieSet) {
-      data.map(item => {
+      data.map((item) => {
         if (watchedMovieSet.has(item.movieId)) {
           item.viewed = true;
         }
@@ -326,7 +339,7 @@ class Main extends React.Component {
     }
 
     if (starMovieSet) {
-      data.map(item => {
+      data.map((item) => {
         if (starMovieSet.has(item.movieId)) {
           item.star = true;
         }
@@ -339,7 +352,7 @@ class Main extends React.Component {
           style={{
             marginBottom: 16,
             display: 'grid',
-            gridTemplateColumns: '5fr 5fr'
+            gridTemplateColumns: '5fr 5fr',
           }}
         >
           <div style={{ display: 'grid' }}>
@@ -349,27 +362,44 @@ class Main extends React.Component {
               style={{ width: 200 }}
             />
           </div>
-          {this.props.showSyncButton && (
+          {showSyncButton && (
             <div
               style={{
                 display: 'grid',
                 justifyItems: 'end',
-                alignItems: 'center'
+                alignItems: 'center',
               }}
             >
               <div>
                 <span style={{ marginRight: 8 }}>
                   {this.renderLatestSyncTime()}
                 </span>
-                <Button
-                  type="primary"
-                  icon="sync"
-                  onClick={this.props.syncMovies}
-                >
-                  SYNC
-                </Button>
+                <Tooltip placement="bottom" title="sync">
+                  <Button
+                    shape="circle"
+                    icon="sync"
+                    onClick={syncMovies}
+                  />
+                </Tooltip>
               </div>
             </div>
+          )}
+          {showRefreshButton && (
+          <div
+            style={{
+              display: 'grid',
+              justifyItems: 'end',
+              alignItems: 'center',
+            }}
+          >
+            <Tooltip placement="bottom" title="reload">
+              <Button
+                shape="circle"
+                icon="reload"
+                onClick={refreshMovies}
+              />
+            </Tooltip>
+          </div>
           )}
         </div>
         <Table
@@ -380,9 +410,10 @@ class Main extends React.Component {
             pageSize,
             showSizeChanger: true,
             onShowSizeChange: this.onShowSizeChange,
-            pageSizeOptions: ['6', '8', '10'],
+            pageSizeOptions: ['6', '8', '10', '15', '20'],
             showQuickJumper: true,
-            onChange: this.onChange
+            onChange: this.onChange,
+            // position: 'top',
           }}
           expandedRowRender={record => <MovieDetail record={record} />}
           scroll={{ y: '60vh' }}
@@ -401,15 +432,16 @@ function mapStateToProps() {
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch
+    dispatch,
   };
 }
 
 Main.propTypes = {
-  showSyncButton: PropTypes.bool
+  showSyncButton: PropTypes.bool,
+  showRefreshButton: PropTypes.bool,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Main);
