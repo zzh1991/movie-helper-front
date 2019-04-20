@@ -15,13 +15,13 @@ module.exports = {
       'redux',
       'redux-saga',
       'redux-thunk',
-      'prop-types'
-    ]
+      'prop-types',
+    ],
   },
   output: {
     // path: path.resolve(__dirname, 'src/main/resources/static/built'),
     filename: '[name].js',
-    publicPath: '/built/'
+    publicPath: '/built/',
   },
   devtool: 'inline-source-map',
   module: {
@@ -31,42 +31,42 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader'
-          }
-        ]
+            loader: 'babel-loader',
+          },
+        ],
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
             loader: 'css-loader',
             options: {
               modules: true,
               camelCase: true,
-              sourceMap: true
-            }
-          }
-        ]
+              sourceMap: true,
+            },
+          },
+        ],
       },
       {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader'
+            loader: 'style-loader',
           },
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
           },
           {
             loader: 'less-loader',
             options: {
-              javascriptEnabled: true
-            }
-          }
-        ]
+              javascriptEnabled: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif)$/,
@@ -75,12 +75,12 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              outputPath: '../src/main/resources/static/images/'
-            }
-          }
-        ]
-      }
-    ]
+              outputPath: '../src/main/resources/static/images/',
+            },
+          },
+        ],
+      },
+    ],
   },
   optimization: {
     splitChunks: {
@@ -89,10 +89,10 @@ module.exports = {
           chunks: 'initial',
           test: 'vendor',
           name: 'vendor',
-          enforce: true
-        }
-      }
-    }
+          enforce: true,
+        },
+      },
+    },
   },
   plugins: [new webpack.HotModuleReplacementPlugin()],
   devServer: {
@@ -102,11 +102,11 @@ module.exports = {
       '*': {
         target: 'http://localhost:8080',
         secure: false,
-        prependPath: false
-      }
+        prependPath: false,
+      },
     },
     historyApiFallback: true,
     open: false,
-    hot: true
-  }
+    hot: true,
+  },
 };
