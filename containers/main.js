@@ -152,7 +152,7 @@ class Main extends React.Component {
         maxDate = item.updateTime;
       }
     }
-    return `上次同步时间: ${dayjs(maxDate).format()}`;
+    return `上次同步时间: ${dayjs(maxDate).format('YYYY-MM-DD HH:mm:ss Z')}`;
   };
 
   render() {

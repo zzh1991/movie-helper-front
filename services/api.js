@@ -4,67 +4,67 @@ export default {
   fetchUser() {
     const url = '/data';
     return CommonApi(url, {
-      method: 'GET'
+      method: 'GET',
     });
   },
   fetchStudentInfo(request) {
     const url = `/student/${request}`;
     return CommonApi(url, {
-      method: 'GET'
+      method: 'GET',
     });
   },
   fetchMovieRecent() {
     const url = 'movie/recent';
     return CommonApi(url, {
       method: 'GET',
-      mode: 'cors'
+      mode: 'cors',
     });
   },
   fetchMovieTop() {
     const url = 'movie/top250';
     return CommonApi(url, {
       method: 'GET',
-      mode: 'cors'
+      mode: 'cors',
     });
   },
   fetchMovieViewed(request) {
     const url = `movie/viewed/${request.id}/${request.viewed}`;
     return CommonApi(url, {
       method: 'GET',
-      mode: 'cors'
+      mode: 'cors',
     });
   },
   fetchViewedMovieList(request) {
-    const url = `movie/viewed`;
+    const url = 'movie/viewed';
     return CommonApi(url, {
       method: 'POST',
       mode: 'cors',
-      body: request
+      body: request,
       // headers: {
       //   'Content-Type': 'application/json',
       // }
     });
   },
   fetchStarMovieList(request) {
-    const url = `movie/star`;
+    const url = 'movie/star';
     return CommonApi(url, {
       method: 'POST',
       mode: 'cors',
-      body: request
+      body: request,
     });
   },
   syncRecentMovies() {
     const url = 'sync/recent';
     return CommonApi(url, {
       method: 'POST',
-      mode: 'cors'
+      mode: 'cors',
     });
   },
   fetchAllMovieList() {
-    const url = `movie/all`;
+    const url = 'movie/all';
     return CommonApi(url, {
       method: 'GET',
-      mode: 'cors'
+      mode: 'cors',
     });
-  }
+  },
 };

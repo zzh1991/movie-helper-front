@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-export default function(url, request) {
+export default function (url, request) {
   if (request && request.body) {
     request.body = JSON.stringify(request.body);
   }
@@ -8,12 +8,12 @@ export default function(url, request) {
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': '*',
   };
 
   request = {
     ...{ headers },
-    ...request
+    ...request,
   };
 
   return fetch(url, request)

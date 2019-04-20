@@ -8,13 +8,13 @@ import {
   fetchMovieViewed,
   fetchViewdMovieList,
   fetchStarMovieList,
-  fetchAllMovieList
+  fetchAllMovieList,
 } from '../actions/actions';
 import {
   fetchStudent,
   fetchStudentError,
   fetchStudentInfoSuccess,
-  fetchStudentInfoFailure
+  fetchStudentInfoFailure,
 } from '../actions/miniAction';
 
 function* fetchDataSage(action) {
@@ -100,14 +100,14 @@ function* watchFetchData() {
 function* watchFetchStudentInfo() {
   yield* takeLatest(
     ActionTypes.FETCH_STUDENT_INFO_REQUEST,
-    fetchStudentInfoSage
+    fetchStudentInfoSage,
   );
 }
 
 function* watchFetchMovieRecent() {
   yield* takeLatest(
     ActionTypes.FETCH_MOVIE_RECENT_REQUEST,
-    fetchMovieRecentSage
+    fetchMovieRecentSage,
   );
 }
 
@@ -118,28 +118,28 @@ function* watchFetchMovieTop() {
 function* watchFetchMovieViewed() {
   yield* takeLatest(
     ActionTypes.FETCH_MOVIE_VIEWED_REQUEST,
-    fetchMovieViewedSage
+    fetchMovieViewedSage,
   );
 }
 
 function* watchFetchViewedMovieList() {
   yield* takeLatest(
     ActionTypes.FETCH_VIEWED_MOVIE_LIST_REQUEST,
-    fetchViewedMovieListSage
+    fetchViewedMovieListSage,
   );
 }
 
 function* watchFetchStarMovieList() {
   yield* takeLatest(
     ActionTypes.FETCH_STAR_MOVIE_LIST_REQUEST,
-    fetchStarMovieListSage
+    fetchStarMovieListSage,
   );
 }
 
 function* watchFetchAllMovieList() {
   yield* takeLatest(
     ActionTypes.FETCH_ALL_MOVIE_LIST_REQUEST,
-    fetchAllMovieListSage
+    fetchAllMovieListSage,
   );
 }
 
@@ -152,6 +152,6 @@ export default function* HelloSaga() {
     watchFetchMovieViewed(),
     watchFetchViewedMovieList(),
     watchFetchStarMovieList(),
-    watchFetchAllMovieList()
+    watchFetchAllMovieList(),
   ];
 }

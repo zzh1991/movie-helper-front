@@ -49,19 +49,19 @@
     "webpack-dev-server": "3.1.11"
   },
   "dependencies": {
-    "antd": "^3.13.2",
-    "dayjs": "^1.8.6",
+    "antd": "^3.16.3",
+    "dayjs": "^1.8.12",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
     "less": "^3.9.0",
-    "prop-types": "^15.5.10",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-redux": "^5.0.6",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "^5.0.0",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.2",
-    "redux-thunk": "^2.2.0",
-    "styled-components": "^2.2.3"
+    "redux-saga": "0.16.2",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.2.0"
   }
 }
