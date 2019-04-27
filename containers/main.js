@@ -416,7 +416,7 @@ class Main extends React.Component {
             // position: 'top',
           }}
           expandedRowRender={record => <MovieDetail record={record} />}
-          scroll={{ y: '60vh' }}
+          // scroll={{ y: '60vh' }}
           rowKey={record => record.id}
         />
       </div>

@@ -80,11 +80,15 @@ class SideBar extends React.Component {
               </Menu.Item>
             </Menu>
           </Sider>
-          <Layout>
-            <Content style={{ padding: 20, overflowY: 'hidden' }}>
+          <Layout style={{
+            display: 'flex',
+            flexDirection: 'column',
+          }}
+          >
+            <Content style={{ padding: 20, flex: '1 0 auto' }}>
               {this.props.children}
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
+            <Footer style={{ textAlign: 'center', flexShrink: 0 }}>
               Movie Helper ©2019 Created by zzh
             </Footer>
           </Layout>
