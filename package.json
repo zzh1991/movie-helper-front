@@ -44,12 +44,13 @@
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
-    "webpack": "4.28.4",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "3.1.11"
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3",
+    "webpack-dev-server": "^3.7.0"
   },
   "dependencies": {
-    "antd": "^3.16.3",
+    "@ant-design/pro-layout": "^4.5.2",
+    "antd": "^3.19.2",
     "dayjs": "^1.8.12",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
