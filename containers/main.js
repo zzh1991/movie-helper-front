@@ -242,7 +242,7 @@ class Main extends React.Component {
                     );
                   }}
                 >
-                  <Icon type="eye" theme="outlined" />
+                  <Icon type="eye" />
                 </Button>
               )}
             </span>
@@ -294,7 +294,7 @@ class Main extends React.Component {
                     this.updateCheck(!isChecked, record.movieId, starMovieName);
                   }}
                 >
-                  <Icon type="heart" theme="outlined" />
+                  <Icon type="heart" />
                 </Button>
               )}
             </span>
