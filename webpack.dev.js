@@ -103,6 +103,7 @@ module.exports = {
         target: 'http://localhost:8080',
         secure: false,
         prependPath: false,
+        changeOrigin: false,
       },
     },
     historyApiFallback: true,

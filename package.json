@@ -38,7 +38,7 @@
     "html-webpack-plugin": "^3.2.0",
     "html-withimg-loader": "^0.1.16",
     "image-loader": "0.0.1",
-    "less-loader": "^4.1.0",
+    "less-loader": "^5.0.0",
     "postcss-modules": "^1.1.0",
     "redux-logger": "^3.0.6",
     "style-loader": "^0.23.1",
@@ -49,20 +49,20 @@
     "webpack-dev-server": "^3.7.0"
   },
   "dependencies": {
-    "@ant-design/pro-layout": "^4.5.2",
-    "antd": "^3.19.2",
-    "dayjs": "^1.8.12",
-    "immutable": "^3.8.1",
+    "@ant-design/pro-layout": "^4.5.14",
+    "antd": "^3.22.0",
+    "dayjs": "^1.8.15",
+    "immutable": "3.8.2",
     "isomorphic-fetch": "^2.2.1",
-    "less": "^3.9.0",
+    "less": "^3.10.0",
     "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-redux": "^5.0.6",
-    "react-router-dom": "^5.0.0",
-    "redux": "^4.0.0",
-    "redux-saga": "^1.0.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.0.5",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.3.2"
   }
 }
