@@ -22,6 +22,10 @@
   color: red;
 }
 
+tr {
+  background: #302f3d !important;
+}
+
 .extra-info {
   display: flex;
   flex-direction: row;

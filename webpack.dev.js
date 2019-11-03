@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const darkTheme = require('@ant-design/dark-theme');
 // const path = require('path');
 
 const port = process.env.PORT || 3000;
@@ -64,6 +65,7 @@ module.exports = {
             loader: 'less-loader',
             options: {
               javascriptEnabled: true,
+              modifyVars: darkTheme.default,
             },
           },
         ],

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const darkTheme = require('@ant-design/dark-theme');
 // const uglify = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -56,6 +57,7 @@ module.exports = {
             loader: 'less-loader',
             options: {
               javascriptEnabled: true,
+              modifyVars: darkTheme.default,
             },
           },
         ],
