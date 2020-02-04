@@ -7,7 +7,7 @@ const { Footer } = Layout;
 
 const MovieFooter = () => (
   <Footer style={{ textAlign: 'center', flexShrink: 0 }}>
-    Movie Helper ©2019 Created by zzh
+    Movie Helper ©2020 Created by zzh
   </Footer>
 );
 
@@ -50,8 +50,8 @@ class MoviePageContainer extends Component {
     return (
       <BasicLayout
         title="电影助手"
-        logo={false}
-        // logo="https://i.loli.net/2019/06/07/5cfa719a2f89437772.png"
+        // logo={false}
+        logo="https://i.loli.net/2019/06/07/5cfa719a2f89437772.png"
         // logo={() => <a href="/"><img src="https://i.loli.net/2019/06/07/5cfa719a2f89437772.png" alt="icon" /></a>}
         layout="topmenu"
         collapsed

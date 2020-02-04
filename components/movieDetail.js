@@ -17,7 +17,6 @@ class MovieDetail extends Component {
           {record.directors.split(',').map(director => (
             <Author key={director}>{director}</Author>
           ))}
-          <hr />
           <h3>简介</h3>
           <p>{record.summary}</p>
           <h3>国家</h3>
