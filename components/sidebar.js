@@ -1,5 +1,8 @@
 import React from 'react';
-import { Layout, Icon, Menu } from 'antd';
+import {
+  AppstoreOutlined, EyeOutlined, HeartOutlined, HomeOutlined, StarOutlined,
+} from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
 import { withRouter } from 'react-router-dom';
 import '../styles/style.css';
 
@@ -42,11 +45,6 @@ class SideBar extends React.Component {
           }}
         >
           <div style={{ fontSize: 20, color: 'white', marginLeft: -30 }}>
-            <Icon
-              className="trigger"
-              type={collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={this.toggle}
-            />
             {'  电影助手'}
           </div>
         </Header>
@@ -59,23 +57,23 @@ class SideBar extends React.Component {
               defaultSelectedKeys={[window.location.hash.substr(1)]}
             >
               <Menu.Item key="/">
-                <Icon type="home" />
+                <HomeOutlined />
                 <span>上映电影</span>
               </Menu.Item>
               <Menu.Item key="/top">
-                <Icon type="heart" />
+                <HeartOutlined />
                 <span>Top 100</span>
               </Menu.Item>
               <Menu.Item key="/view">
-                <Icon type="eye" />
+                <EyeOutlined />
                 <span>已观影</span>
               </Menu.Item>
               <Menu.Item key="/star">
-                <Icon type="star" />
+                <StarOutlined />
                 <span>想看</span>
               </Menu.Item>
               <Menu.Item key="/all">
-                <Icon type="appstore" />
+                <AppstoreOutlined />
                 <span>所有电影</span>
               </Menu.Item>
             </Menu>
