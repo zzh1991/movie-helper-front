@@ -1,7 +1,13 @@
 import React from 'react';
 import {
-  Table, Button, Input, Icon, Tooltip,
-} from 'antd';
+  EyeFilled,
+  EyeOutlined,
+  HeartFilled,
+  HeartOutlined,
+  ReloadOutlined,
+  SyncOutlined,
+} from '@ant-design/icons';
+import { Table, Button, Input, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
@@ -182,14 +188,20 @@ class Main extends React.Component {
         title: '豆瓣评分',
         key: 'rate',
         dataIndex: 'rating',
-        sorter: (a, b) => a.rating - b.rating,
+        sorter: {
+          compare: (a, b) => a.rating - b.rating,
+          multiple: 1,
+        },
         width: 100,
       },
       {
         title: '上映年份',
         key: 'year',
         dataIndex: 'movieYear',
-        sorter: (a, b) => a.movieYear - b.movieYear,
+        sorter: {
+          compare: (a, b) => a.movieYear - b.movieYear,
+          multiple: 1,
+        },
         width: 150,
       },
       {
@@ -198,8 +210,8 @@ class Main extends React.Component {
         dataIndex: 'genres',
         width: 150,
         filters: movieType,
-        filterMultiple: false,
-        onFilter: (value, record) => record.genres.indexOf(value) !== -1,
+        filterMultiple: true,
+        onFilter: (value, record) => record.genres.includes(value),
         filtered: true,
       },
       {
@@ -228,7 +240,7 @@ class Main extends React.Component {
                     );
                   }}
                 >
-                  <Icon type="eye" theme="filled" />
+                  <EyeFilled />
                 </Button>
               )}
               {!isChecked && (
@@ -242,7 +254,7 @@ class Main extends React.Component {
                     );
                   }}
                 >
-                  <Icon type="eye" />
+                  <EyeOutlined />
                 </Button>
               )}
             </span>
@@ -284,7 +296,7 @@ class Main extends React.Component {
                     this.updateCheck(!isChecked, record.movieId, starMovieName);
                   }}
                 >
-                  <Icon type="heart" theme="filled" />
+                  <HeartFilled />
                 </Button>
               )}
               {!isChecked && (
@@ -294,7 +306,7 @@ class Main extends React.Component {
                     this.updateCheck(!isChecked, record.movieId, starMovieName);
                   }}
                 >
-                  <Icon type="heart" />
+                  <HeartOutlined />
                 </Button>
               )}
             </span>
@@ -377,7 +389,7 @@ class Main extends React.Component {
                 <Tooltip placement="bottom" title="sync">
                   <Button
                     shape="circle"
-                    icon="sync"
+                    icon={<SyncOutlined />}
                     onClick={syncMovies}
                   />
                 </Tooltip>
@@ -395,7 +407,7 @@ class Main extends React.Component {
             <Tooltip placement="bottom" title="reload">
               <Button
                 shape="circle"
-                icon="reload"
+                icon={<ReloadOutlined />}
                 onClick={refreshMovies}
               />
             </Tooltip>

@@ -51,8 +51,16 @@ class MoviePageContainer extends Component {
       <BasicLayout
         title="电影助手"
         // logo={false}
-        logo="https://i.loli.net/2019/06/07/5cfa719a2f89437772.png"
-        // logo={() => <a href="/"><img src="https://i.loli.net/2019/06/07/5cfa719a2f89437772.png" alt="icon" /></a>}
+        logo="https://i.loli.net/2020/02/28/hDKMbkNLI4uAQUx.png"
+        // logo={() => (
+        //   <a href="/">
+        //     <img
+        //       src="https://i.loli.net/2020/02/28/7X5SoAVeRdDjsnL.png"
+        //       alt="logo"
+        //       height="64px"
+        //     />
+        //   </a>
+        // )}
         layout="topmenu"
         collapsed
         // menuDataRender={() => {
