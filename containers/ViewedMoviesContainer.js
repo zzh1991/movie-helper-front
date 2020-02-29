@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
 import Main from './main';
-import '../styles/style.css';
+import '../styles/style.less';
 import { fetchViewdMovieList, getMovieList } from '../actions/actions';
 
 const watchedMovieName = 'watchedMovieList';

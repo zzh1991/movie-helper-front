@@ -106,7 +106,7 @@ module.exports = {
     new AntdDayjsWebpackPlugin(),
   ],
   devServer: {
-    host: 'localhost',
+    host: '0.0.0.0',
     port,
     proxy: {
       '*': {

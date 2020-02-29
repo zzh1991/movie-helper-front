@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Spin } from 'antd';
 import { fetchMovieRecent, syncRecentMovieList } from '../actions/actions';
 import Main from './main';
-import '../styles/style.css';
+import '../styles/style.less';
 
 class SidebarContainer extends Component {
   componentDidMount() {

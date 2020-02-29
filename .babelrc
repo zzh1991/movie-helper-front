@@ -1,9 +1,20 @@
 {
-  "presets": ["@babel/env", "@babel/react"],
+  "presets": [
+    ["@babel/env", {
+      "modules": false
+    }],
+    ["@babel/react", {
+      "modules": false
+    }]
+  ],
   "plugins": [
     ["@babel/plugin-syntax-dynamic-import"],
     ["@babel/plugin-transform-runtime"],
     ["@babel/plugin-proposal-class-properties"],
-    ["import", {"libraryName": "antd", "style": true }]
+    ["import", {
+      "libraryName": "antd",
+      "style": true,
+      "libraryDirectory": "es"
+    }]
   ]
 }

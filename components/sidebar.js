@@ -4,7 +4,7 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu } from 'antd';
 import { withRouter } from 'react-router-dom';
-import '../styles/style.css';
+import '../styles/style.less';
 
 const {
   Header, Content, Sider, Footer,

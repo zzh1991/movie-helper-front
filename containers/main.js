@@ -11,7 +11,7 @@ import { Table, Button, Input, Tooltip } from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
-import '../styles/style.css';
+import '../styles/style.less';
 import {
   fetchMovieViewed,
   saveMovieToLocal,

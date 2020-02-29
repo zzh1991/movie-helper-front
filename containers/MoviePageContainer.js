@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BasicLayout from '@ant-design/pro-layout';
 import { Layout } from 'antd';
 import { Link } from 'react-router-dom';
+import { HomeFilled, HeartFilled, EyeFilled, StarFilled, AppstoreFilled } from '@ant-design/icons';
 
 const { Footer } = Layout;
 
@@ -15,31 +16,31 @@ const menuList = [
   {
     path: '/recent',
     name: '上映电影',
-    icon: 'home',
+    icon: <HomeFilled />,
     // key: '/recent',
   },
   {
     path: '/top',
     name: 'Top 100',
-    icon: 'heart',
+    icon: <HeartFilled />,
     // key: '/top',
   },
   {
     path: '/view',
     name: '已观影',
-    icon: 'eye',
+    icon: <EyeFilled />,
     // key: '/view',
   },
   {
     path: '/star',
     name: '想看',
-    icon: 'star',
+    icon: <StarFilled />,
     // key: '/star',
   },
   {
     path: '/all',
     name: '全部电影',
-    icon: 'appstore',
+    icon: <AppstoreFilled />,
     // key: '/all',
   },
 ];
@@ -50,12 +51,12 @@ class MoviePageContainer extends Component {
     return (
       <BasicLayout
         title="电影助手"
-        // logo={false}
-        logo="https://i.loli.net/2020/02/28/hDKMbkNLI4uAQUx.png"
+        contentStyle={{ height: 'calc(100vh - 200px)' }}
+        logo="https://i.loli.net/2020/02/29/EQsTMSBYLC4kxiq.png"
         // logo={() => (
         //   <a href="/">
         //     <img
-        //       src="https://i.loli.net/2020/02/28/7X5SoAVeRdDjsnL.png"
+        //       src="https://i.loli.net/2020/02/28/hDKMbkNLI4uAQUx.png"
         //       alt="logo"
         //       height="64px"
         //     />

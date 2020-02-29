@@ -48,9 +48,10 @@
 
 ## Todo
 
-- [x] upgrade antd
+- [x] upgrade antd3
 - [x] redesign layout
 - [x] support dark mode
+- [x] support antd4
 
 ## Dependency
 
