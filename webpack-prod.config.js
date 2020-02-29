@@ -3,6 +3,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const darkTheme = require('@ant-design/dark-theme');
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 // const uglify = require('uglifyjs-webpack-plugin');
 
 module.exports = {
@@ -18,6 +19,8 @@ module.exports = {
       'redux-saga',
       'redux-thunk',
       'prop-types',
+      'immutable',
+      'styled-components',
     ],
   },
   output: {
@@ -100,5 +103,6 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
+    new AntdDayjsWebpackPlugin(),
   ],
 };

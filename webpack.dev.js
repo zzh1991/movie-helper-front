@@ -1,5 +1,7 @@
 const webpack = require('webpack');
 const darkTheme = require('@ant-design/dark-theme');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 // const path = require('path');
 
 const port = process.env.PORT || 3000;
@@ -17,6 +19,8 @@ module.exports = {
       'redux-saga',
       'redux-thunk',
       'prop-types',
+      'immutable',
+      'styled-components',
     ],
   },
   output: {
@@ -96,7 +100,11 @@ module.exports = {
       },
     },
   },
-  plugins: [new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin(),
+    new AntdDayjsWebpackPlugin(),
+  ],
   devServer: {
     host: 'localhost',
     port,
