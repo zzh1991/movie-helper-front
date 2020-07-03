@@ -17,31 +17,31 @@ const menuList = [
     path: '/recent',
     name: '上映电影',
     icon: <HomeFilled />,
-    // key: '/recent',
+    exact: true,
   },
   {
     path: '/top',
     name: 'Top 100',
     icon: <HeartFilled />,
-    // key: '/top',
+    exact: true,
   },
   {
     path: '/view',
     name: '已观影',
     icon: <EyeFilled />,
-    // key: '/view',
+    exact: true,
   },
   {
     path: '/star',
     name: '想看',
     icon: <StarFilled />,
-    // key: '/star',
+    exact: true,
   },
   {
     path: '/all',
     name: '全部电影',
     icon: <AppstoreFilled />,
-    // key: '/all',
+    exact: true,
   },
 ];
 
@@ -51,7 +51,6 @@ class MoviePageContainer extends Component {
     return (
       <BasicLayout
         title="电影助手"
-        contentStyle={{ height: 'calc(100vh - 200px)' }}
         logo="https://i.loli.net/2020/02/29/EQsTMSBYLC4kxiq.png"
         // logo={() => (
         //   <a href="/">

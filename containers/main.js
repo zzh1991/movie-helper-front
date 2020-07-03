@@ -386,7 +386,7 @@ class Main extends React.Component {
                 <span style={{ marginRight: 8 }}>
                   {this.renderLatestSyncTime()}
                 </span>
-                <Tooltip placement="bottom" title="sync">
+                <Tooltip placement="bottom" title="同步">
                   <Button
                     shape="circle"
                     icon={<SyncOutlined />}

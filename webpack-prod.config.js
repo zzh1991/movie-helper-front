@@ -59,8 +59,10 @@ module.exports = {
           {
             loader: 'less-loader',
             options: {
-              javascriptEnabled: true,
-              modifyVars: darkTheme.default,
+              lessOptions: {
+                javascriptEnabled: true,
+                modifyVars: darkTheme.default,
+              }
             },
           },
         ],
