@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const darkTheme = require('@ant-design/dark-theme');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 // const uglify = require('uglifyjs-webpack-plugin');
@@ -99,7 +99,9 @@ module.exports = {
       filename: '../templates/index.html',
     }),
     // new uglify(),
-    new CleanWebpackPlugin('../src/main/resources/static/built/*.*', {}),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['../src/main/resources/static/built/*.*'],
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
