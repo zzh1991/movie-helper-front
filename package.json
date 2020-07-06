@@ -70,7 +70,7 @@
     "redux": "^4.0.4",
     "redux-saga": "^1.1.1",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.4.1",
+    "styled-components": "^5.1.1",
     "snyk": "^1.360.0"
   },
   "snyk": true
