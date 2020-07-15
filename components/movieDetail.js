@@ -19,8 +19,8 @@ class MovieDetail extends Component {
           ))}
           <h3>简介</h3>
           <p>{record.summary}</p>
-          <h3>国家</h3>
-          <p>{record.countries}</p>
+          {record.countries && <h3>国家</h3>}
+          {record.countries && <p>{record.countries}</p>}
         </CastsInfo>
       </ExtraInfo>
     );
