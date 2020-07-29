@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import BasicLayout from '@ant-design/pro-layout';
 import { Layout } from 'antd';
 import { withRouter } from 'react-router-dom';
-import { HomeFilled, HeartFilled, EyeFilled, StarFilled, AppstoreFilled } from '@ant-design/icons';
+import {
+  HomeFilled, HeartFilled, EyeFilled, StarFilled, AppstoreFilled,
+} from '@ant-design/icons';
 
 const { Footer } = Layout;
 

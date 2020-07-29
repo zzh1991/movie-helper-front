@@ -2,25 +2,22 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const darkTheme = require('@ant-design/dark-theme');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
-// const uglify = require('uglifyjs-webpack-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = {
   mode: 'production',
   entry: {
     bundle: './index.js',
     vendor: [
-      'react',
-      'react-dom',
       'react-redux',
       'react-router-dom',
       'redux',
       'redux-saga',
       'redux-thunk',
       'prop-types',
-      'immutable',
-      'styled-components',
     ],
   },
   output: {
@@ -62,7 +59,7 @@ module.exports = {
               lessOptions: {
                 javascriptEnabled: true,
                 modifyVars: darkTheme.default,
-              }
+              },
             },
           },
         ],
@@ -98,9 +95,22 @@ module.exports = {
       template: '../src/main/resources/html-template/index.html',
       filename: '../templates/index.html',
     }),
-    // new uglify(),
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['../src/main/resources/static/built/*.*'],
+    }),
+    new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'react',
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js',
+          global: 'React',
+        },
+        {
+          module: 'react-dom',
+          entry: 'https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js',
+          global: 'ReactDOM',
+        },
+      ],
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -108,5 +118,6 @@ module.exports = {
       },
     }),
     new AntdDayjsWebpackPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 };
