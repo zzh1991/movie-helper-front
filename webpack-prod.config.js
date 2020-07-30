@@ -6,6 +6,9 @@ const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 const darkTheme = require('@ant-design/dark-theme');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -35,14 +38,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.less$/,
@@ -79,6 +75,10 @@ module.exports = {
     ],
   },
   optimization: {
+    nodeEnv: 'production',
+    minimize: true,
+    concatenateModules: true,
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -112,10 +112,9 @@ module.exports = {
         },
       ],
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-      },
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
     }),
     new AntdDayjsWebpackPlugin(),
     // new BundleAnalyzerPlugin(),
