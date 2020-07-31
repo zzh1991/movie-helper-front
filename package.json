@@ -54,7 +54,6 @@
   "dependencies": {
     "@ant-design/dark-theme": "^2.0.2",
     "@ant-design/icons": "^4.2.1",
-    "@ant-design/pro-layout": "^6.2.5",
     "antd": "^4.5.1",
     "dayjs": "^1.8.30",
     "eslint-plugin-react-hooks": "^4.0.8",

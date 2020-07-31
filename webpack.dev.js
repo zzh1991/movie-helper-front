@@ -11,14 +11,11 @@ module.exports = {
   entry: {
     bundle: './index.js',
     vendor: [
-      'react',
-      'react-dom',
       'react-redux',
       'react-router-dom',
       'redux',
       'redux-saga',
       'redux-thunk',
-      'prop-types',
     ],
   },
   output: {

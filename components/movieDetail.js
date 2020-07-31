@@ -10,11 +10,11 @@ class MovieDetail extends Component {
         {/* <p><a href={record.imageLarge} target={'_blank'}>{record.title}</a></p> */}
         <CastsInfo>
           <h3>主演</h3>
-          {record.casts.split(',').map(cast => (
+          {record.casts.split(',').map((cast) => (
             <Author key={cast}>{cast}</Author>
           ))}
           <h3>导演</h3>
-          {record.directors.split(',').map(director => (
+          {record.directors.split(',').map((director) => (
             <Author key={director}>{director}</Author>
           ))}
           <h3>简介</h3>

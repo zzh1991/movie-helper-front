@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { HashRouter as Router, Route, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { ConfigProvider } from 'antd';
+import zhCN from 'antd/es/locale/zh_CN';
 import store from './store';
 import NotFound from './containers/notFound';
 
@@ -15,15 +17,17 @@ const Routes = () => (
   <Provider store={store}>
     <Router>
       <Suspense fallback={<div>Loading...</div>}>
-        <MoviePageContainer>
-          <Route exact path="/" render={() => (<Redirect to="/recent" />)} />
-          <Route path="/recent" component={SideBarContainer} />
-          <Route path="/top" component={TopMoviesContainer} />
-          <Route path="/view" component={ViewedMoviesContainer} />
-          <Route path="/star" component={StarMoviesContainer} />
-          <Route path="/all" component={AllMoviesContainer} />
-          <Route path="/404" component={NotFound} />
-        </MoviePageContainer>
+        <ConfigProvider locale={zhCN}>
+          <MoviePageContainer>
+            <Route exact path="/" render={() => (<Redirect to="/recent" />)} />
+            <Route path="/recent" component={SideBarContainer} />
+            <Route path="/top" component={TopMoviesContainer} />
+            <Route path="/view" component={ViewedMoviesContainer} />
+            <Route path="/star" component={StarMoviesContainer} />
+            <Route path="/all" component={AllMoviesContainer} />
+            <Route path="/404" component={NotFound} />
+          </MoviePageContainer>
+        </ConfigProvider>
       </Suspense>
     </Router>
   </Provider>
