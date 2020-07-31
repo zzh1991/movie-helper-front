@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Spin } from 'antd';
 import Main from './main';
-import '../styles/style.less';
 import { fetchMovieTop, syncTopMovieList } from '../actions/actions';
 
 class TopMoviesContainer extends Component {

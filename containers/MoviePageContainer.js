@@ -1,51 +1,11 @@
 import React, { Component } from 'react';
-import BasicLayout from '@ant-design/pro-layout';
-import { Layout } from 'antd';
+import { Layout, Menu } from 'antd';
 import { withRouter } from 'react-router-dom';
 import {
   HomeFilled, HeartFilled, EyeFilled, StarFilled, AppstoreFilled,
 } from '@ant-design/icons';
 
-const { Footer } = Layout;
-
-const MovieFooter = () => (
-  <Footer style={{ textAlign: 'center', flexShrink: 0 }}>
-    Movie Helper ©2020 Created by zzh
-  </Footer>
-);
-
-const menuList = [
-  {
-    path: '/recent',
-    name: '上映电影',
-    icon: <HomeFilled />,
-    exact: true,
-  },
-  {
-    path: '/top',
-    name: 'Top 100',
-    icon: <StarFilled />,
-    exact: true,
-  },
-  {
-    path: '/view',
-    name: '已观影',
-    icon: <EyeFilled />,
-    exact: true,
-  },
-  {
-    path: '/star',
-    name: '想看',
-    icon: <HeartFilled />,
-    exact: true,
-  },
-  {
-    path: '/all',
-    name: '全部电影',
-    icon: <AppstoreFilled />,
-    exact: true,
-  },
-];
+const { Header, Content, Footer } = Layout;
 
 class MoviePageContainer extends Component {
   constructor(props) {
@@ -64,11 +24,15 @@ class MoviePageContainer extends Component {
     return path;
   }
 
-  onMenuChick = (path) => {
+  onMenuChick = (menu) => {
     const { history } = this.props;
-    history.push(path);
+    const { menuKey } = this.state;
+    if (menu.key === menuKey) {
+      return;
+    }
+    history.push(menu.key);
     this.setState({
-      menuKey: path,
+      menuKey: menu.key,
     });
   }
 
@@ -76,43 +40,52 @@ class MoviePageContainer extends Component {
     const { children } = this.props;
     const { menuKey } = this.state;
     return (
-      <BasicLayout
-        title=""
-        // logo="https://i.loli.net/2020/02/29/EQsTMSBYLC4kxiq.png"
-        logo={() => (
+      <Layout>
+        {window.outerWidth >= 1000 && (
+        <Header>
           <span
-            onClick={() => this.onMenuChick('/recent')}
-            onKeyPress={() => this.onMenuChick('/recent')}
+            style={{
+              float: 'left',
+              fontSize: 24,
+              marginRight: 48,
+              cursor: 'pointer',
+            }}
+            onClick={() => this.onMenuChick({ key: '/recent' })}
+            onKeyPress={() => this.onMenuChick({ key: '/recent' })}
           >
-            <img
-              src="https://i.loli.net/2020/02/29/EQsTMSBYLC4kxiq.png"
-              alt="logo"
-              height="64px"
-            />
+            电影助手
           </span>
-        )}
-        layout="topmenu"
-        collapsed
-        route={
-          {
-            routes: menuList,
-          }
-        }
-        footerRender={() => <MovieFooter />}
-        menuItemRender={(props, defaultDom) => (
-          <span
-            onClick={() => this.onMenuChick(props.path)}
-            onKeyPress={() => this.onMenuChick(props.path)}
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            onClick={this.onMenuChick}
+            defaultSelectedKeys={[menuKey]}
           >
-            {defaultDom}
-          </span>
+            <Menu.Item key="/recent" icon={<HomeFilled />}>
+              上映电影
+            </Menu.Item>
+            <Menu.Item key="/top" icon={<StarFilled />}>
+              Top
+            </Menu.Item>
+            <Menu.Item key="/view" icon={<EyeFilled />}>
+              已看
+            </Menu.Item>
+            <Menu.Item key="/star" icon={<HeartFilled />}>
+              想看
+            </Menu.Item>
+            <Menu.Item key="/all" icon={<AppstoreFilled />}>
+              所有电影
+            </Menu.Item>
+          </Menu>
+        </Header>
         )}
-        menuProps={{
-          selectedKeys: [menuKey],
-        }}
-      >
-        {children}
-      </BasicLayout>
+        <Content style={{ margin: 24 }}>
+          {children}
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+          Movie Helper ©2020 Created by zzh
+        </Footer>
+      </Layout>
     );
   }
 }

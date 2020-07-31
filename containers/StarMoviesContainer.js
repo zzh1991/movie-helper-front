@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Spin } from 'antd';
 import { connect } from 'react-redux';
 import Main from './main';
-import '../styles/style.less';
 import { fetchStarMovieList, getMovieList } from '../actions/actions';
 
 const starMovieName = 'starMovieList';
@@ -30,7 +29,6 @@ class StarMoviesContainer extends Component {
         <Spin tip="Loading..." spinning={loading}>
           <Main
             data={data}
-            showRefreshButton
             refreshMovies={this.onRefresh}
           />
         </Spin>

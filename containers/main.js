@@ -7,11 +7,12 @@ import {
   ReloadOutlined,
   SyncOutlined,
 } from '@ant-design/icons';
-import { Table, Button, Input, Tooltip } from 'antd';
+import {
+  Table, Button, Input, Tooltip,
+} from 'antd';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
-import '../styles/style.less';
 import {
   fetchMovieViewed,
   saveMovieToLocal,
@@ -19,6 +20,7 @@ import {
   getMovieList,
 } from '../actions/actions';
 import MovieDetail from '../components/movieDetail';
+import MovieList from '../components/movieList';
 
 // eslint-disable-next-line prefer-destructuring
 const Search = Input.Search;
@@ -185,7 +187,7 @@ class Main extends React.Component {
         width: 200,
       },
       {
-        title: '豆瓣评分',
+        title: '评分',
         key: 'rate',
         dataIndex: 'rating',
         sorter: {
@@ -215,7 +217,7 @@ class Main extends React.Component {
         filtered: true,
       },
       {
-        title: '已观影',
+        title: '已看',
         key: 'viewed',
         dataIndex: 'viewed',
         render: (text, record) => {
@@ -263,11 +265,11 @@ class Main extends React.Component {
         width: 100,
         filters: [
           {
-            text: '已观影',
+            text: '已看',
             value: 1,
           },
           {
-            text: '未观影',
+            text: '未看',
             value: 0,
           },
         ],
@@ -319,7 +321,7 @@ class Main extends React.Component {
             value: 1,
           },
           {
-            text: '未知',
+            text: '不看',
             value: 0,
           },
         ],
@@ -335,7 +337,7 @@ class Main extends React.Component {
     if (data !== null) {
       const { searchText } = this.state;
       if (searchText !== '') {
-        data = data.filter(item => item.title.includes(searchText));
+        data = data.filter((item) => item.title.includes(searchText));
       }
       data.map((item, index) => {
         item.key = index;
@@ -360,21 +362,24 @@ class Main extends React.Component {
 
     return (
       <div>
-        <div
-          style={{
-            marginBottom: 16,
-            display: 'grid',
-            gridTemplateColumns: '5fr 5fr',
-          }}
-        >
-          <div style={{ display: 'grid' }}>
-            <Search
-              placeholder="电影搜索"
-              onSearch={this.searchMovie}
-              style={{ width: 200 }}
-            />
-          </div>
-          {showSyncButton && (
+        {window.outerWidth >= 1000
+        && (
+        <div>
+          <div
+            style={{
+              marginBottom: 16,
+              display: 'grid',
+              gridTemplateColumns: '5fr 5fr',
+            }}
+          >
+            <div style={{ display: 'grid' }}>
+              <Search
+                placeholder="电影搜索"
+                onSearch={this.searchMovie}
+                style={{ width: 200 }}
+              />
+            </div>
+            {showSyncButton && (
             <div
               style={{
                 display: 'grid',
@@ -395,42 +400,45 @@ class Main extends React.Component {
                 </Tooltip>
               </div>
             </div>
-          )}
-          {showRefreshButton && (
-          <div
-            style={{
-              display: 'grid',
-              justifyItems: 'end',
-              alignItems: 'center',
-            }}
-          >
-            <Tooltip placement="bottom" title="reload">
-              <Button
-                shape="circle"
-                icon={<ReloadOutlined />}
-                onClick={refreshMovies}
-              />
-            </Tooltip>
+            )}
+            {showRefreshButton && (
+            <div
+              style={{
+                display: 'grid',
+                justifyItems: 'end',
+                alignItems: 'center',
+              }}
+            >
+              <Tooltip placement="bottom" title="reload">
+                <Button
+                  shape="circle"
+                  icon={<ReloadOutlined />}
+                  onClick={refreshMovies}
+                />
+              </Tooltip>
+            </div>
+            )}
           </div>
-          )}
+          <Table
+            columns={columns}
+            dataSource={data}
+            pagination={{
+              current,
+              pageSize,
+              showSizeChanger: true,
+              onShowSizeChange: this.onShowSizeChange,
+              pageSizeOptions: ['6', '8', '10', '15', '20'],
+              showQuickJumper: true,
+              onChange: this.onChange,
+              // position: 'top',
+            }}
+            expandedRowRender={(record) => <MovieDetail record={record} />}
+            // scroll={{ y: '60vh' }}
+            rowKey={(record) => record.id}
+          />
         </div>
-        <Table
-          columns={columns}
-          dataSource={data}
-          pagination={{
-            current,
-            pageSize,
-            showSizeChanger: true,
-            onShowSizeChange: this.onShowSizeChange,
-            pageSizeOptions: ['6', '8', '10', '15', '20'],
-            showQuickJumper: true,
-            onChange: this.onChange,
-            // position: 'top',
-          }}
-          expandedRowRender={record => <MovieDetail record={record} />}
-          // scroll={{ y: '60vh' }}
-          rowKey={record => record.id}
-        />
+        )}
+        {window.outerWidth < 1000 && (<MovieList movieList={data} />)}
       </div>
     );
   }
