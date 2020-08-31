@@ -6,6 +6,7 @@
     </a>
     <h3 align="center">Movie Helper Front</h3>
     <p align="center">
+        <img src="https://badges.toozhao.com/badges/01EH2F3FV7R8RFJYZP8AFQG94V/green.svg" />
         <a href="https://github.com/zzh1991/movie-helper-front/blob/master/LICENSE"><img src="https://img.shields.io/github/license/zzh1991/movie-helper-front.svg"></a>
         <a href="#"><img src="https://img.shields.io/github/languages/top/zzh1991/movie-helper-front.svg"></a>
         <a href="#"><img src="https://img.shields.io/github/languages/count/zzh1991/movie-helper-front.svg"></a>
