@@ -214,7 +214,6 @@ class Main extends React.Component {
         filters: movieType,
         filterMultiple: true,
         onFilter: (value, record) => record.genres.includes(value),
-        filtered: true,
       },
       {
         title: '已看',
