@@ -4,8 +4,9 @@ import { withRouter } from 'react-router-dom';
 import {
   HomeFilled, HeartFilled, EyeFilled, StarFilled, AppstoreFilled,
 } from '@ant-design/icons';
+import styled from 'styled-components';
 
-const { Header, Content, Footer } = Layout;
+const { Content } = Layout;
 
 class MoviePageContainer extends Component {
   constructor(props) {
@@ -40,23 +41,16 @@ class MoviePageContainer extends Component {
     const { children } = this.props;
     const { menuKey } = this.state;
     return (
-      <Layout>
+      <PageDisplay>
         {window.outerWidth >= 1000 && (
-        <Header>
-          <span
-            style={{
-              float: 'left',
-              fontSize: 24,
-              marginRight: 48,
-              cursor: 'pointer',
-            }}
+        <PageHeader>
+          <PageHeaderTitle
             onClick={() => this.onMenuChick({ key: '/recent' })}
             onKeyPress={() => this.onMenuChick({ key: '/recent' })}
           >
             电影助手
-          </span>
+          </PageHeaderTitle>
           <Menu
-            theme="dark"
             mode="horizontal"
             onClick={this.onMenuChick}
             defaultSelectedKeys={[menuKey]}
@@ -77,17 +71,43 @@ class MoviePageContainer extends Component {
               所有电影
             </Menu.Item>
           </Menu>
-        </Header>
+        </PageHeader>
         )}
         <Content style={{ margin: 24 }}>
           {children}
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
+        <PageFooter>
           Movie Helper ©2020 Created by zzh
-        </Footer>
-      </Layout>
+        </PageFooter>
+      </PageDisplay>
     );
   }
 }
+
+const PageDisplay = styled.div`
+display: grid;
+grid-template-rows: auto 1fr auto;
+height: 100vh;
+`;
+
+const PageHeader = styled.div`
+display: grid;
+grid-template-columns: auto 1fr;
+`;
+
+const PageHeaderTitle = styled.div`
+cursor: pointer;
+display: grid;
+align-items: center;
+margin-left: 24px;
+margin-right: 24px;
+font-size: 18px;
+`;
+
+const PageFooter = styled.div`
+display: grid;
+place-items: center;
+margin: 8px;
+`;
 
 export default withRouter(MoviePageContainer);

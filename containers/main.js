@@ -13,6 +13,7 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import {
   fetchMovieViewed,
   saveMovieToLocal,
@@ -24,6 +25,8 @@ import MovieList from '../components/movieList';
 
 // eslint-disable-next-line prefer-destructuring
 const Search = Input.Search;
+
+dayjs.extend(utc);
 
 const movieType = [
   {
@@ -160,7 +163,7 @@ class Main extends React.Component {
         maxDate = item.updateTime;
       }
     }
-    return `上次同步时间: ${dayjs(maxDate).format('YYYY-MM-DD HH:mm:ss')}`;
+    return `上次同步时间: ${dayjs.utc(maxDate).local().format('YYYY-MM-DD HH:mm:ss')}`;
   };
 
   render() {
@@ -390,7 +393,7 @@ class Main extends React.Component {
                 <span style={{ marginRight: 8 }}>
                   {this.renderLatestSyncTime()}
                 </span>
-                <Tooltip placement="bottom" title="同步">
+                <Tooltip placement="top" title="同步">
                   <Button
                     shape="circle"
                     icon={<SyncOutlined />}

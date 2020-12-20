@@ -3,7 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
-const darkTheme = require('@ant-design/dark-theme');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -53,7 +52,6 @@ module.exports = {
             options: {
               lessOptions: {
                 javascriptEnabled: true,
-                modifyVars: darkTheme.default,
               },
             },
           },

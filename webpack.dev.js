@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const darkTheme = require('@ant-design/dark-theme');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const path = require('path');
@@ -65,7 +64,6 @@ module.exports = {
             options: {
               lessOptions: {
                 javascriptEnabled: true,
-                modifyVars: darkTheme.default,
               },
             },
           },
