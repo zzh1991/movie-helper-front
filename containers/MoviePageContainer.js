@@ -42,7 +42,9 @@ class MoviePageContainer extends Component {
     const { menuKey } = this.state;
     return (
       <PageDisplay>
-        {window.outerWidth >= 1000 && (
+        {
+        // eslint-disable-next-line no-undef
+        window.outerWidth >= 1000 && (
         <PageHeader>
           <PageHeaderTitle
             onClick={() => this.onMenuChick({ key: '/recent' })}
@@ -72,7 +74,8 @@ class MoviePageContainer extends Component {
             </Menu.Item>
           </Menu>
         </PageHeader>
-        )}
+        )
+        }
         <Content style={{ margin: 24 }}>
           {children}
         </Content>
