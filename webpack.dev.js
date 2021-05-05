@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const path = require('path');
 
 const port = process.env.PORT || 3000;
@@ -32,6 +32,13 @@ module.exports = {
           {
             loader: 'babel-loader',
           },
+          {
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'jsx',
+              target: 'es2015',
+            },
+          },
         ],
       },
       {
@@ -46,6 +53,12 @@ module.exports = {
               modules: true,
               camelCase: true,
               sourceMap: true,
+            },
+          },
+          {
+            loader: 'esbuild-loader',
+            options: {
+              loader: 'css',
             },
           },
         ],
@@ -97,7 +110,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new AntdDayjsWebpackPlugin(),
   ],
   devServer: {
