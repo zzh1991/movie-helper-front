@@ -10,8 +10,6 @@
         <a href="https://github.com/zzh1991/movie-helper-front/blob/master/LICENSE"><img src="https://img.shields.io/github/license/zzh1991/movie-helper-front.svg"></a>
         <a href="#"><img src="https://img.shields.io/github/languages/top/zzh1991/movie-helper-front.svg"></a>
         <a href="#"><img src="https://img.shields.io/github/languages/count/zzh1991/movie-helper-front.svg"></a>
-        <a href="#"><img src="https://img.shields.io/github/search/zzh1991/movie-helper-front/goto.svg"></a>
-        <a href="https://snyk.io//test/github/zzh1991/movie-helper-front?targetFile=package.json"><img src="https://snyk.io//test/github/zzh1991/movie-helper-front/badge.svg?targetFile=package.json" alt="Known Vulnerabilities" data-canonical-src="https://snyk.io//test/github/zzh1991/movie-helper-front?targetFile=package.json" style="max-width:100%;"></a>
     </p>
     <p align="center">
         Movie management and find valueable movies to watch<br>
@@ -20,10 +18,10 @@
 
 ## 🚀 Usage
 
-- `yarn`: install dependency
-- `yarn start`
+- `npm install`: install dependency
+- `npm run start`
 - go to http://localhost:3000
-- `yarn run deploy` to build
+- `npm run deploy` to build
 
 ## Demo: [Movie Helper](http://movie.zzhpro.com)
 
@@ -96,11 +94,6 @@
 
 ### [Parcel](https://parceljs.org/)
 
-#### Problems for parcel
-
-- css packaged, class name is not same, so not css effect
-- svg, jpg url path is not right for static resource, not web resource
-
 ## Author
 
 👤 **Zhihao Zhang**
@@ -113,5 +106,5 @@ Please ⭐️ this repository if this project helped you!
 
 ## 📝 License
 
-Copyright © 2020 [zzh1991](https://github.com/zzh1991).<br />
+Copyright © 2023 [zzh1991](https://github.com/zzh1991).<br />
 This project is [MIT](https://github.com/zzh1991/movie-helper-front/blob/master/LICENSE) licensed.
