@@ -80,7 +80,7 @@ class MoviePageContainer extends Component {
           {children}
         </Content>
         <PageFooter>
-          Movie Helper ©2017-2021 Created by zzh
+          Movie Helper ©2017-2023 Created by zzh
         </PageFooter>
       </PageDisplay>
     );
